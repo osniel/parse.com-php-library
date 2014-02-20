@@ -290,6 +290,50 @@ class parseQuery extends parseRestClient{
 		}
 		
 	}
+	
+	public function whereDateGreaterThan($key,$value){
+		if(isset($key) && isset($value)){
+			$this->_query[$key] = array(
+				'$gt' => $this->dataType('date', $value)
+			);
+		}	
+		else{
+			$this->throwError('the $key and $value parameters must be set when setting a "where" query method');		
+		}
+	}
+	
+	public function whereDateLessThan($key,$value){
+		if(isset($key) && isset($value)){
+			$this->_query[$key] = array(
+				'$lt' => $this->dataType('date', $value)
+			);
+		}	
+		else{
+			$this->throwError('the $key and $value parameters must be set when setting a "where" query method');		
+		}
+	}
+	
+	public function whereDateGreaterThanOrEqualTo($key,$value){
+		if(isset($key) && isset($value)){
+			$this->_query[$key] = array(
+				'$gte' => $this->dataType('date', $value)
+			);
+		}	
+		else{
+			$this->throwError('the $key and $value parameters must be set when setting a "where" query method');		
+		}
+	}
+	
+	public function whereDateLessThanOrEqualTo($key,$value){
+		if(isset($key) && isset($value)){
+			$this->_query[$key] = array(
+				'$lte' => $this->dataType('date', $value)
+			);
+		}	
+		else{
+			$this->throwError('the $key and $value parameters must be set when setting a "where" query method');		
+		}
+	}
 
 	public function whereInQuery($key,$className,$inQuery){
 		if(isset($key) && isset($className)){
